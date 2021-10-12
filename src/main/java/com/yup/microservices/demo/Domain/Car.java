@@ -1,4 +1,4 @@
-package com.yup.demo1.Domain;
+package com.yup.microservices.demo.Domain;
 
 import java.io.File;
 
@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.yup.demo1.Repository.CarRepository;
+import com.yup.microservices.demo.Repository.CarRepository;
 
 public class Car {
 	@Autowired

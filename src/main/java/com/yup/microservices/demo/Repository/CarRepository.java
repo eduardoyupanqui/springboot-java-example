@@ -1,4 +1,4 @@
-package com.yup.demo1.Repository;
+package com.yup.microservices.demo.Repository;
 
 import org.springframework.stereotype.Repository;
 

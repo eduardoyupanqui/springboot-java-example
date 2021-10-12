@@ -1,4 +1,4 @@
-package com.yup.demo1;
+package com.yup.microservices.demo;
 
 import java.io.File;
 
