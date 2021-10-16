@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <appender name="AWS_LOGS" class="ca.pjer.logback.AwsLogsAppender">
+        <layout>
+            <pattern>%d{yyyyMMdd'T'HHmmss} %thread %level %logger{15} %msg%n</pattern>
+        </layout>
+        <logGroupName>/com/yup/myapp</logGroupName>
+        <logStreamUuidPrefix>mystream/</logStreamUuidPrefix>
+<!--        <logRegion>us-east-1</logRegion>-->
+
+<!--        <accessKeyId></accessKeyId>-->
+<!--        <secretAccessKey></secretAccessKey>-->
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="AWS_LOGS"/>
+    </root>
+</configuration>
+
