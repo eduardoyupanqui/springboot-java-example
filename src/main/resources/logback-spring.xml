@@ -7,17 +7,17 @@
 <!--        <layout>-->
 <!--            <pattern>%d{yyyyMMdd'T'HHmmss} %thread %level %logger{15} %msg%n</pattern>-->
 <!--        </layout>-->
-<!--        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">-->
-<!--            <jsonFormatter-->
-<!--                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">-->
-<!--                <prettyPrint>true</prettyPrint>-->
-<!--            </jsonFormatter>-->
-<!--            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>-->
-<!--        </layout>-->
-
-        <layout class="net.logstash.logback.layout.LogstashLayout">
-            <customFields>{"appname":"ms-demo"}</customFields>
+        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+            <jsonFormatter
+                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                <prettyPrint>true</prettyPrint>
+            </jsonFormatter>
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
         </layout>
+<!--            <layout class="ch.qos.logback.access.PatternLayout"></layout>-->
+<!--        <layout class="net.logstash.logback.layout.LogstashLayout">-->
+<!--            <customFields>{"appname":"ms-demo"}</customFields>-->
+<!--        </layout>-->
 
         <logGroupName>/com/yup/myapp</logGroupName>
         <logStreamUuidPrefix>mystream/</logStreamUuidPrefix>
@@ -28,7 +28,7 @@
     </appender>
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="AWS_LOGS"/>
+<!--        <appender-ref ref="AWS_LOGS"/>-->
     </root>
 </configuration>
 
