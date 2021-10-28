@@ -4,9 +4,21 @@
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
 
     <appender name="AWS_LOGS" class="ca.pjer.logback.AwsLogsAppender">
-        <layout>
-            <pattern>%d{yyyyMMdd'T'HHmmss} %thread %level %logger{15} %msg%n</pattern>
+<!--        <layout>-->
+<!--            <pattern>%d{yyyyMMdd'T'HHmmss} %thread %level %logger{15} %msg%n</pattern>-->
+<!--        </layout>-->
+<!--        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">-->
+<!--            <jsonFormatter-->
+<!--                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">-->
+<!--                <prettyPrint>true</prettyPrint>-->
+<!--            </jsonFormatter>-->
+<!--            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>-->
+<!--        </layout>-->
+
+        <layout class="net.logstash.logback.layout.LogstashLayout">
+            <customFields>{"appname":"ms-demo"}</customFields>
         </layout>
+
         <logGroupName>/com/yup/myapp</logGroupName>
         <logStreamUuidPrefix>mystream/</logStreamUuidPrefix>
 <!--        <logRegion>us-east-1</logRegion>-->

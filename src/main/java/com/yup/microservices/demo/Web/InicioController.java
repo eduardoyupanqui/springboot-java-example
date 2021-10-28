@@ -18,12 +18,16 @@ public class InicioController {
     }
     @GetMapping("/warning")
     public String getWarning() {
-        logger.warn("START  [POST] /v1/inicio/status");
+        logger.warn("START  [POST] /v1/inicio/warning");
         return "warning";
     }
     @GetMapping("/error")
     public String getError() {
-        logger.error("START  [POST] /v1/inicio/status");
+        try {
+            throw new Exception("START  [POST] /v1/inicio/error");
+        } catch (Exception e) {
+            logger.error("Some error occured", e);
+        }
         return "error";
     }
 }
