@@ -63,21 +63,32 @@
 			<version>2.9.2</version>
 		</dependency>
 
+		<!-- Trace log -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency>
+		<!-- Trace log -->
+
 		<dependency>
 			<groupId>ca.pjer</groupId>
 			<artifactId>logback-awslogs-appender</artifactId>
 			<version>1.6.0</version>
 		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>ch.qos.logback</groupId>-->
+<!--			<artifactId>logback-classic</artifactId>-->
+<!--			<version>${logback.version}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>ch.qos.logback</groupId>-->
+<!--			<artifactId>logback-core</artifactId>-->
+<!--			<version>${logback.version}</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-access</artifactId>
@@ -101,16 +112,16 @@
 <!--			<version>2.9.3</version>-->
 <!--		</dependency>-->
 
-		<dependency>
-			<groupId>net.logstash.logback</groupId>
-			<artifactId>logstash-logback-encoder</artifactId>
-			<version>6.6</version>
-			<!-- Use runtime scope if the project does not have any compile-time usage of logstash-logback-encoder,
-                 such as usage of StructuredArguments/Markers or implementations such as
-                 JsonProvider, AppenderListener, JsonFactoryDecorator, JsonGeneratorDecorator, etc
-            <scope>runtime</scope>
-            -->
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>net.logstash.logback</groupId>-->
+<!--			<artifactId>logstash-logback-encoder</artifactId>-->
+<!--			<version>6.6</version>-->
+<!--			&lt;!&ndash; Use runtime scope if the project does not have any compile-time usage of logstash-logback-encoder,-->
+<!--                 such as usage of StructuredArguments/Markers or implementations such as-->
+<!--                 JsonProvider, AppenderListener, JsonFactoryDecorator, JsonGeneratorDecorator, etc-->
+<!--            <scope>runtime</scope>-->
+<!--            &ndash;&gt;-->
+<!--		</dependency>-->
 
 
 		<dependency>
@@ -149,7 +160,17 @@
 		</dependency>
 
 	</dependencies>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>

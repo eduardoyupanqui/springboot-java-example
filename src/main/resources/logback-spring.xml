@@ -3,17 +3,28 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
 
+    <springProperty scope="context" name="aws_region" source="aws.region"/>
+    <springProperty scope="context" name="aws_accessKeyId" source="aws.accessKeyId"/>
+    <springProperty scope="context" name="aws_secretKey" source="aws.secretKey"/>
+
     <appender name="AWS_LOGS" class="ca.pjer.logback.AwsLogsAppender">
 <!--        <layout>-->
 <!--            <pattern>%d{yyyyMMdd'T'HHmmss} %thread %level %logger{15} %msg%n</pattern>-->
 <!--        </layout>-->
-        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
-            <jsonFormatter
-                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
-                <prettyPrint>true</prettyPrint>
-            </jsonFormatter>
-            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
-        </layout>
+
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+                <jsonFormatter
+                        class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                    <prettyPrint>true</prettyPrint>
+                </jsonFormatter>
+<!--                <context>api</context>-->
+<!--                <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>-->
+                <timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSSX</timestampFormat>
+                <includeLoggerName>true</includeLoggerName>
+                <includeContextName>true</includeContextName>
+            </layout>
+        </encoder>
 <!--            <layout class="ch.qos.logback.access.PatternLayout"></layout>-->
 <!--        <layout class="net.logstash.logback.layout.LogstashLayout">-->
 <!--            <customFields>{"appname":"ms-demo"}</customFields>-->
