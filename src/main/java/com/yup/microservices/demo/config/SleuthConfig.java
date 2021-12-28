@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.WebFilter;
 
 @Configuration(proxyBeanMethods = false)
@@ -38,4 +39,9 @@ public class SleuthConfig {
 //            return chain.filter(exchange);
 //        };
 //    }
+
+    @Bean
+    public WebClient.Builder webClientBuilder() {
+        return WebClient.builder();
+    }
 }
