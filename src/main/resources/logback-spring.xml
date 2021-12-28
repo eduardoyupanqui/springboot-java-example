@@ -32,14 +32,22 @@
 
         <logGroupName>/com/yup/myapp</logGroupName>
         <logStreamUuidPrefix>mystream/</logStreamUuidPrefix>
-<!--        <logRegion>us-east-1</logRegion>-->
+        <logRegion>${aws_region}</logRegion>
 
-<!--        <accessKeyId></accessKeyId>-->
-<!--        <secretAccessKey></secretAccessKey>-->
+        <accessKeyId>${aws_accessKeyId}</accessKeyId>
+        <secretAccessKey>${aws_secretKey}</secretAccessKey>
     </appender>
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-<!--        <appender-ref ref="AWS_LOGS"/>-->
-    </root>
+    <springProfile name="local | dev">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <!--<appender-ref ref="AWS_LOGS"/>-->
+        </root>
+    </springProfile>
+    <springProfile name="!dev">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="AWS_LOGS"/>
+        </root>
+    </springProfile>
 </configuration>
 
