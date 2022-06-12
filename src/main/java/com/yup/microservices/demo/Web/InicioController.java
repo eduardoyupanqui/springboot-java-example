@@ -2,6 +2,7 @@ package com.yup.microservices.demo.Web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("v1/inicio")
 public class InicioController {
     private final Logger    logger = LoggerFactory.getLogger(getClass());
+    @Value("${prueba.config}")
+    private String PruebaConfig;
+
+    @GetMapping("/")
+    public String getHome() {
+        logger.info("START  [GET] /");
+        logger.info("Hola Spring Boot, valor de prueba.config es "+PruebaConfig);
+        return "blank";
+    }
 
     @GetMapping("/status")
     public String getStatus() {
